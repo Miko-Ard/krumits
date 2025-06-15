@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.left {
+    width: 40%;
+    background: linear-gradient(to bottom right, #547ca4, #8ca9c9);
+    color: white;
+    padding: 50px 30px;
+    position: relative;
+}
+
+.logo img {
+    width: 120px;
+    margin-bottom: 40px;
+}
+
+.left h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.left h2 {
+    font-size: 1.8em;
+    margin: 10px 0;
+}
+
+.left p {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #e0e0e0;
+}
+
+.left .blue {
+    color: #5d7eff;
+    font-weight: bold;
+}
+
+.left .bold {
+    font-weight: bold;
+    color: white;
+}
+
+.menu {
+    margin-top: 40px;
+}
+
+.menu a {
+    display: inline-block;
+    margin-right: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.menu a.active {
+    background-color: #000;
+    color: white;
+}
+
+.right {
+    width: 60%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.login-box {
+    text-align: center;
+}
+
+.login-box h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.login-box input {
+    width: 300px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.login-box button {
+    width: 320px;
+    padding: 12px;
+    background-color: #5d7eff;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-box button:hover {
+    background-color: #324bff;
+}
+
+
+.shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.circle {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: 30%;
+    left: 10%;
+}
+
+.circle.small {
+    width: 80px;
+    height: 80px;
+    top: 70%;
+    left: 60%;
+}
+
+.triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid rgba(255, 255, 255, 0.1);
+    top: 50%;
+    left: 80%;
+}

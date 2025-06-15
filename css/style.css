@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap');
+
+body{
+    padding: 0px;
+    margin: 0;
+    background-color: pink;
+    height: 100vh;
+}
+.nav-Head{
+    height: 100px;
+    background-color: white;
+}
+
+#logo{
+    width: 100px;
+    height: 100px;
+}
+/* .nav-Head header{
+    display: flex;
+    flex-direction: row;
+} */
+
+.nav-Head header ul{
+    font-family: "Gabarito", sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+    font-size: 16px;
+    list-style:none;
+    margin-right: 50px;
+    background-color: white;
+    transition: 5ms;
+    height: 100px;
+}
+.nav-Head ul li {
+    height: 100px;
+}
+
+.nav-Head ul li a {
+    height: 100%;        
+    display: flex;       
+    align-items: center;    
+    padding: 0 20px;     
+    background-color: white;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-Head header ul {
+    display: flex;
+    justify-content: right;
+}
+
+
+.nav-Head .Nav li:nth-child(5){
+    margin-left: auto;
+}
+
+.nav-Head ul li a:hover{
+    background-color: rgb(95, 95, 95);
+}
+
+

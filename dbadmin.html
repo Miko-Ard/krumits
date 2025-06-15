@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" /><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/db.css" />
+    
+    <title>Admin Dashboard</title>
+  </head>
+  <body>
+<div class="pc">
+<div class="container">
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <div class="logo"></div>
+    <div class="menu-section">
+      <div class="menu-title">MENU</div>
+      <div class="menu-item active">
+        <img src="FOTO/home.png" alt="Dashboard" />
+        <span>DASHBOARD</span>
+      </div>
+      <div class="menu-item">
+        <img src="FOTO/report.png" alt="Reports" />
+        <span>REPORT</span>
+      </div>
+      <div class="menu-item">
+        <img src="FOTO/responses.png" alt="Responses" />
+        <span>RESPONSES</span>
+      </div>
+    </div>
+    <div class="tools-section">
+      <div class="tools-title">TOOLS</div>
+      <div class="menu-item">
+        <img src="FOTO/setting.png" alt="Settings" />
+        <span>SETTING</span>
+      </div>
+    </div>
+    <div class="logout-section">
+      <div class="menu-item">
+        <img src="FOTO/logout.png" alt="Logout" />
+        <span>LOG OUT</span>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Welcome Section -->
+  
+    <section class="welcome-section">
+      <div class="welcome-header">
+        <h1>Hello, Dex6077</h1>
+        <h2>Welcome Back !</h2>
+        <button class="schedule-btn">Check Schedule</button>
+      </div>
+      <div class="welcome-image">
+        <img src="FOTO/logo2.png" alt="Welcome graphic" style="opacity: 0.3;filter: blur(2px); width: 200px; height: auto;"/>
+      </div>
+    </section>
+
+    <!-- Profile Card -->
+    <aside class="profile-card">
+      <div class="profile-image">
+        <img src="FOTO/profil.jpg" alt="Profile" />
+      </div>
+      <h1>Hello,</h1>
+      <h3>Dex6077</h3>
+      <h2>Welcome Back !</h2>
+      <button class="profile-btn">Your Profile</button>
+    </aside>
+
+    <!-- Event Card -->
+    <section class="event-card">
+      <div class="event-header">
+        <img src="FOTO/event.png" alt="Event" />
+        <h3>Event</h3>
+      </div>
+      <div class="event-details">
+        <h2>LEADERSHIP<br />VOTE</h2>
+        <p>Wednesday, May 8th 2025</p>
+      </div>
+      <button class="event-btn">
+        Go to The Page
+        <img src="/FOTO/vector.png" alt="Arrow" />
+      </button>
+      <button class="add-btn">
+        <img src="/FOTO/add.png" alt="Add" />
+      </button>
+    </section>
+    
+    
+    
+    <!-- Responses Section -->
+    <section class="responses-section">
+      <div class="responses-header">
+        <h3>Last Response</h3>
+        <a href="#" class="view-all">
+          View All
+          <img src="FOTO/ship.png" alt="View all" />
+        </a>
+      </div>
+      
+      <div class="responses-table">
+        <div class="table-header">
+          <div class="header-cell">NIM</div>
+          <div class="header-cell">Name</div>
+          <div class="header-cell">Vote</div>
+          <div class="header-cell">Date</div>
+        </div>
+        
+        <div class="table-body">
+          <div class="table-row">
+            <div class="nim">2400018777</div>
+            <div class="table-cell">Ada Wong</div>
+            <div class="vote">1</div>
+            <div class="table-cell">05-06-2025</div>
+          </div>
+          <div class="table-row">
+            <div class="nim">2200009177</div>
+            <div class="table-cell">Blud</div>
+            <div class="vote">3</div>
+            <div class="table-cell">05-06-2025</div>
+          </div>
+          <div class="table-row">
+            <div class="nim">2300015001</div>
+            <div class="table-cell">Alvin</div>
+            <div class="vote">1</div>
+            <div class="table-cell">05-08-2025</div>
+          </div>
+          <div class="table-row">
+            <div class="nim">2300014012</div>
+            <div class="table-cell">Dhea</div>
+            <div class="vote">3</div>
+            <div class="table-cell">05-08-2025</div>
+          </div>
+          <div class="table-row">
+            <div class="nim">2400018057</div>
+            <div class="table-cell">Faiz</div>
+            <div class="vote">2</div>
+            <div class="table-cell">05-07-2025</div>
+          </div>
+          <div class="table-row">
+            <div class="nim">2000011097</div>
+            <div class="table-cell">Albert</div>
+            <div class="vote">1</div>
+            <div class="table-cell">05-07-2025</div>
+          </div>
+          <div class="table-row">
+            <div class="nim">2200017017</div>
+            <div class="table-cell">Jojo</div>
+            <div class="vote">2</div>
+            <div class="table-cell">05-07-2025</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="hp">
+
+      <nav class="bottom-nav" aria-label="Primary navigation">
+        <button aria-label="Home">
+          <span class="material-icons" aria-hidden="true">home</span>
+        </button>
+        <button aria-label="Notifications">
+          <span class="material-icons" aria-hidden="true">chat_bubble_outline</span>
+        </button>
+        <button aria-label="User profile">
+          <span class="material-icons" aria-hidden="true">person_outline</span>
+        </button>
+        <button aria-label="Settings">
+          <span class="material-icons" aria-hidden="true">settings</span>
+        </button>
+      </nav>
+    </div>
+    
+
+  </main>
+</div>
+</div>
+</div>
+</body>
+</html>

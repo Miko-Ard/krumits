@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard - Kampus Konnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/db2.css">
+</head>
+<body>
+  <div class="app-container" role="main">
+    <aside class="sidebar" aria-label="Sidebar Navigation">
+      <div class="sidebar-header" aria-label="Kampus Konnect logo and brand name">
+        <img src="https://placehold.co/36x36?text=KK" alt="Kampus Konnect logo - black text with blue accent" />
+        <span>KAMPUS KONNECT</span>
+      </div>
+      <nav aria-label="Main menu" class="menu" role="navigation">
+        <div class="menu-section" aria-hidden="true">Menu</div>
+        <ul class="menu-list">
+          <li><a href="#" class="material-icons" aria-current="false">dashboard</a></li>
+          <li><a href="#" class="active" aria-current="page"><span class="material-icons" aria-hidden="true" focusable="false">report</span>Report</a></li>
+          <li><a href="#" class=""><span class="material-icons" aria-hidden="true" focusable="false">people</span>Responses</a></li>
+        </ul>
+        <div class="menu-section" aria-hidden="true">Tools</div>
+        <ul class="menu-list">
+          <li><a href="#"><span class="material-icons" aria-hidden="true" focusable="false">settings</span>Settings</a></li>
+        </ul>
+      </nav>
+
+      <button class="logout" aria-label="Logout">
+        <span class="material-icons" aria-hidden="true">logout</span>
+        Log out
+      </button>
+    </aside>
+
+    <main class="content" aria-label="Main dashboard content">
+      <!-- Header top -->
+      <header class="header-top" aria-label="Welcome and user info">
+        <div>
+          <h1 class="header-greeting" tabindex="0">Hello Admin</h1>
+          <p class="header-date" tabindex="0">Wednesday, May 6th 2025</p>
+        </div>
+        <div class="user-profile" role="complementary" aria-label="User profile information">
+          <img src="https://placehold.co/52x52?text=Michdan" alt="Profile picture of Michdan Alkahfi" class="avatar" />
+          <span class="name">Michdan Alkahfi</span>
+          <span class="role">Admin</span>
+        </div>
+      </header>
+
+      <!-- Info Cards -->
+      <section class="info-cards" aria-label="Summary cards of statistics">
+        <article class="card blue" aria-labelledby="total-responses">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">
+              <span class="material-icons">groups</span>
+            </div>
+            <h2 id="total-responses" class="card-title">Total Responses</h2>
+          </div>
+          <div class="card-row">
+            <span class="number" aria-label="364 total responses">364</span>
+            <span class="label" aria-label="Last month response statistics">Response last month</span>
+          </div>
+        </article>
+
+        <article class="card" aria-labelledby="total-users">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">
+              <span class="material-icons">person_outline</span>
+            </div>
+            <h2 id="total-users" class="card-title">Total User</h2>
+          </div>
+          <div class="card-row">
+            <span class="number" aria-label="412 total users">412</span>
+            <span class="label">Users</span>
+          </div>
+        </article>
+
+        <article class="card" aria-labelledby="visitor-month">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">
+              <span class="material-icons">support_agent</span>
+            </div>
+            <h2 id="visitor-month" class="card-title">Visitor</h2>
+          </div>
+          <div class="card-row">
+            <span class="number" aria-label="394 visitors in month">394</span>
+            <span class="label">Visitor in month</span>
+          </div>
+        </article>
+
+        <article class="card" aria-labelledby="event-month">
+          <div class="card-header">
+            <div class="card-icon" aria-hidden="true">
+              <span class="material-icons">event_note</span>
+            </div>
+            <h2 id="event-month" class="card-title">Event</h2>
+          </div>
+          <div class="card-row">
+            <span class="number" aria-label="1 event this month">1</span>
+            <span class="label">Event in this month</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- Charts Section -->
+      <section class="charts-section" aria-label="Charts and data visualization" style="display:flex; flex-wrap: wrap; gap: 32px; margin-top: 24px;">
+        <!-- Left chart column -->
+        <div style="flex: 1 1 700px; min-width: 320px; max-width: 900px; background:#fff; border-radius:16px; box-shadow:0 10px 25px rgb(131 146 183 / 0.05); padding: 24px 32px;">
+
+          <h3 style="margin:0 0 8px 0; font-weight:600; font-size:1.1rem; color:#111827;">Response statistic</h3>
+          <p style="margin:0 0 24px 0; font-weight:400; font-size:0.8rem; color:#9ca3af;">Track response stat</p>
+
+          <canvas id="responseStatistic" width="720" height="320" aria-label="Bar chart of responses from January to May" role="img" tabindex="0"></canvas>
+        </div>
+
+        <!-- Right chart column - vote results and response growth -->
+        <div style="flex: 0 1 360px; display: flex; flex-direction: column; gap: 32px;">
+          <section aria-label="Vote Results" class="vote-result-card">
+            <h3>VOTE RESULT</h3>
+            <p class="vote-result-subtitle">Leadership vote</p>
+            <div class="vote-result-header">
+              Today
+              <div class="dropdown" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Change time filter">
+                <span>Today</span>
+                <span class="material-icons" aria-hidden="true">expand_more</span>
+              </div>
+            </div>
+            <div class="pie-chart-container">
+              <canvas id="voteResultPie" width="280" height="280" aria-label="Pie chart showing leadership vote distribution" role="img" tabindex="0"></canvas>
+            </div>
+            <div class="chart-legend" role="list" aria-label="Legend of vote results">
+              <div class="legend-item" role="listitem">
+                <span class="legend-color gray" aria-hidden="true"></span>
+                <span>Bintang 29.1%</span>
+              </div>
+              <div class="legend-item" role="listitem">
+                <span class="legend-color" aria-hidden="true"></span>
+                <span>Miko 70.9%</span>
+              </div>
+            </div>
+            <div class="chart-legend" role="list" aria-label="Candidate results">
+              <div class="legend-item" role="listitem" style="width: 50%; font-weight: 700; font-size: 0.85rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px;">Candidate</div>
+              <div class="legend-item" role="listitem" style="width: 50%; font-weight: 700; font-size: 0.85rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px;">Result</div>
+              <div class="legend-item" role="listitem" style="width: 50%;">Bintang</div>
+              <div class="legend-item" role="listitem" style="width: 50%;">96</div>
+              <div class="legend-item" role="listitem" style="width: 50%;">Miko</div>
+              <div class="legend-item" role="listitem" style="width: 50%;">234</div>
+            </div>
+          </section>
+
+          <section aria-label="Response Growth" class="response-growth-card">
+            <h3>Response Growth</h3>
+            <p>Track response by faculty</p>
+            <div class="bubbles" role="list" aria-label="Response growth categories">
+              <div class="bubble tekinfo" aria-label="Teknik Informatika bubble"></div>
+              <div>
+                <div class="bubble-legend" role="listitem">
+                  <span class="legend-color" aria-hidden="true" style="background-color: #4b3f90;"></span>
+                  <span>Teknik Informatika</span>
+                </div>
+                <div class="bubble-legend" role="listitem" style="margin-top: 4px;">
+                  <span class="legend-color" aria-hidden="true" style="background-color:#b8b8be;"></span>
+                  <span>Teknologi pangan</span>
+                </div>
+                <div class="bubble-legend" role="listitem" style="margin-top: 4px;">
+                  <span class="legend-color" aria-hidden="true" style="background-color:#f59e28;"></span>
+                  <span>Teknologi industri</span>
+                </div>
+              </div>
+              <div class="bubble teknopangan" aria-label="Teknologi pangan bubble"></div>
+              <div class="bubble teknolindustri" aria-label="Teknologi industri bubble"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Response Statistic Bar Chart
+    const ctxResponseStat = document.getElementById('responseStatistic').getContext('2d');
+    const responseStatisticChart = new Chart(ctxResponseStat, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [
+          {
+            label: 'Response',
+            data: [100, 180, 243, 80, 130],
+            backgroundColor: '#3b82f6',
+            borderRadius: 6,
+            barPercentage: 0.6,
+            maxBarThickness: 48,
+          },
+          {
+            label: 'response',
+            data: [120, 150, 90, 100, 70],
+            backgroundColor: '#d1d5db',
+            borderRadius: 6,
+            barPercentage: 0.6,
+            maxBarThickness: 48,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        interaction: {
+          intersect: false,
+          mode: 'index',
+        },
+        plugins: {
+          tooltip: {
+            enabled: true,
+            backgroundColor: '#111827',
+            titleFont: { weight: '600' },
+            bodyFont: { weight: '600' },
+            cornerRadius: 12,
+            padding: 8,
+          },
+          legend: { display: false },
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: '#6b7280', font: { weight: '600' } },
+          },
+          y: {
+            grid: { color: '#e5e7eb', borderDash: [4], drawBorder: false },
+            ticks: { color: '#9ca3af', font: { weight: '600' }, stepSize: 50, beginAtZero: true },
+            beginAtZero: true,
+            max: 300,
+          },
+        },
+      },
+    });
+
+    // Vote Result Pie Chart
+    const ctxVoteResult = document.getElementById('voteResultPie').getContext('2d');
+    const voteResultPieChart = new Chart(ctxVoteResult, {
+      type: 'pie',
+      data: {
+        labels: ['Bintang', 'Miko'],
+        datasets: [{
+          label: 'Votes',
+          data: [96, 234],
+          backgroundColor: ['#d1d5db', '#3b82f6'],
+          borderWidth: 0,
+        }],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          tooltip: {
+            backgroundColor: '#111827',
+            titleColor: '#f9fafb',
+            bodyColor: '#f9fafb',
+            cornerRadius: 12,
+            padding: 8,
+          },
+          legend: { display: false },
+        },
+      },
+    });
+  </script>
+</body>
+</html>
+
