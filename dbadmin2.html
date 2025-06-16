@@ -11,28 +11,49 @@
 <body>
   <div class="app-container" role="main">
     <aside class="sidebar" aria-label="Sidebar Navigation">
-      <div class="sidebar-header" aria-label="Kampus Konnect logo and brand name">
-        <img src="https://placehold.co/36x36?text=KK" alt="Kampus Konnect logo - black text with blue accent" />
-        <span>KAMPUS KONNECT</span>
-      </div>
-      <nav aria-label="Main menu" class="menu" role="navigation">
-        <div class="menu-section" aria-hidden="true">Menu</div>
-        <ul class="menu-list">
-          <li><a href="#" class="material-icons" aria-current="false">dashboard</a></li>
-          <li><a href="#" class="active" aria-current="page"><span class="material-icons" aria-hidden="true" focusable="false">report</span>Report</a></li>
-          <li><a href="#" class=""><span class="material-icons" aria-hidden="true" focusable="false">people</span>Responses</a></li>
-        </ul>
-        <div class="menu-section" aria-hidden="true">Tools</div>
-        <ul class="menu-list">
-          <li><a href="#"><span class="material-icons" aria-hidden="true" focusable="false">settings</span>Settings</a></li>
-        </ul>
-      </nav>
+  <div class="sidebar-header">
+    <img src="FOTO/logo2.png" alt="Logo Aplikasi" />
+  </div>
 
-      <button class="logout" aria-label="Logout">
-        <span class="material-icons" aria-hidden="true">logout</span>
-        Log out
-      </button>
-    </aside>
+  <nav aria-label="Main menu" class="menu" role="navigation">
+    <div class="menu-section" aria-hidden="true">MENU</div>
+    <ul class="menu-list">
+      <li>
+        <a href="dbadmin.html" class="menu-item" aria-current="page">
+          <img src="FOTO/home.png" alt="Dashboard" />
+          <span>DASHBOARD</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="menu-item active">
+          <img src="FOTO/report.png" alt="Reports" />
+          <span>REPORT</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="menu-item">
+          <img src="FOTO/responses.png" alt="Responses" />
+          <span>RESPONSES</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="menu-section" aria-hidden="true">TOOLS</div>
+    <ul class="menu-list">
+      <li>
+        <a href="#" class="menu-item">
+          <img src="FOTO/setting.png" alt="Settings" />
+          <span>SETTING</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <button class="logout" aria-label="Logout">
+    <img src="FOTO/logout.png" alt="Logout" />
+    <span>LOG OUT</span>
+  </button>
+</aside>
 
     <main class="content" aria-label="Main dashboard content">
       <!-- Header top -->

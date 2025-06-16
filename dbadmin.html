@@ -13,37 +13,51 @@
 <div class="pc">
 <div class="container">
   <!-- Sidebar Navigation -->
-  <nav class="sidebar">
-    <div class="logo"></div>
-    <div class="menu-section">
-      <div class="menu-title">MENU</div>
-      <div class="menu-item active">
-        <img src="FOTO/home.png" alt="Dashboard" />
-        <span>DASHBOARD</span>
-      </div>
-      <div class="menu-item">
-        <img src="FOTO/report.png" alt="Reports" />
-        <span>REPORT</span>
-      </div>
-      <div class="menu-item">
-        <img src="FOTO/responses.png" alt="Responses" />
-        <span>RESPONSES</span>
-      </div>
-    </div>
-    <div class="tools-section">
-      <div class="tools-title">TOOLS</div>
-      <div class="menu-item">
-        <img src="FOTO/setting.png" alt="Settings" />
-        <span>SETTING</span>
-      </div>
-    </div>
-    <div class="logout-section">
-      <div class="menu-item">
-        <img src="FOTO/logout.png" alt="Logout" />
-        <span>LOG OUT</span>
-      </div>
-    </div>
+  <aside class="sidebar" aria-label="Sidebar Navigation">
+  <div class="sidebar-header">
+    <img src="FOTO/logo2.png" alt="Logo Aplikasi" />
+  </div>
+
+  <nav aria-label="Main menu" class="menu" role="navigation">
+    <div class="menu-section" aria-hidden="true">MENU</div>
+    <ul class="menu-list">
+      <li>
+        <a href="#" class="menu-item active" aria-current="page">
+          <img src="FOTO/home.png" alt="Dashboard" />
+          <span>DASHBOARD</span>
+        </a>
+      </li>
+      <li>
+        <a href="dbadmin2.html" class="menu-item">
+          <img src="FOTO/report.png" alt="Reports" />
+          <span>REPORT</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="menu-item">
+          <img src="FOTO/responses.png" alt="Responses" />
+          <span>RESPONSES</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="menu-section" aria-hidden="true">TOOLS</div>
+    <ul class="menu-list">
+      <li>
+        <a href="#" class="menu-item">
+          <img src="FOTO/setting.png" alt="Settings" />
+          <span>SETTING</span>
+        </a>
+      </li>
+    </ul>
   </nav>
+
+  <button class="logout" aria-label="Logout">
+    <img src="FOTO/logout.png" alt="Logout" />
+    <span>LOG OUT</span>
+  </button>
+</aside>
+
   
   <!-- Main Content -->
   <main class="main-content">
@@ -158,20 +172,19 @@
     </section>
 
     <div class="hp">
-
       <nav class="bottom-nav" aria-label="Primary navigation">
-        <button aria-label="Home">
+        <a href="dbadmin.html" class="nav-btn" aria-label="Home">
           <span class="material-icons" aria-hidden="true">home</span>
-        </button>
-        <button aria-label="Notifications">
+        </a>
+        <a href="dbadmin2.html" class="nav-btn" aria-label="Notifications">
           <span class="material-icons" aria-hidden="true">chat_bubble_outline</span>
-        </button>
-        <button aria-label="User profile">
+        </a>
+        <a href="profile.html" class="nav-btn" aria-label="User profile">
           <span class="material-icons" aria-hidden="true">person_outline</span>
-        </button>
-        <button aria-label="Settings">
+        </a>
+        <a href="settings.html" class="nav-btn" aria-label="Settings">
           <span class="material-icons" aria-hidden="true">settings</span>
-        </button>
+        </a>
       </nav>
     </div>
     
