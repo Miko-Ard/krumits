@@ -1,0 +1,588 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Gabarito:wght@400..900&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Gabarito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+body {
+  background-color: rgb(48, 48, 48);
+  width: clamp(320px, 100vw, 1920px);
+  margin: 0 auto;
+  border: 2px dashed black; /* biar kelihatan batasnya */
+}
+@media (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+.navBar {
+  position: fixed;
+  z-index: 100;
+  height: 120px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+}
+
+.navBar ul {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  align-items: center;
+  list-style: none;
+}
+
+.navBar .left {
+  margin-left: 10px;
+  margin-right: auto;
+  height: 100%;
+}
+
+.navBar .left li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navBar .left li a {
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.navBar .left li:nth-child(2) a:hover,
+.navBar .left li:nth-child(3) a:hover,
+.navBar .left li:nth-child(4) a:hover {
+  background-color: #dadada;
+  color: #5e5e5e;
+}
+
+.navBar .right {
+  margin-left: auto;
+  margin-right: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navBar .right li {
+  margin-right: 15px;
+}
+
+.navBar .right li a {
+  padding: 10px 15px;
+}
+
+#sign {
+  border-radius: 20px;
+  display: flex;
+  justify-content: center | end;
+  width: 70px;
+  border: 2px solid #7a73d1;
+  transition: all 0.2s ease;
+}
+
+#sign:hover {
+  background-color: #cccccc;
+}
+
+#login {
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  width: 70px;
+  color: white;
+  border: 2px solid #7a73d1;
+  background-color: #7a73d1;
+  transition: all 0.2s ease;
+}
+
+#login:hover {
+  background-color: #6862b5;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#logo {
+  width: 150px;
+}
+
+#but-nav {
+  width: 30px;
+}
+
+.SideBar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.143);
+  backdrop-filter: blur(10px);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none; /* biar nggak bisa diklik saat hidden */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.SideBar.show {
+  transform: translateX(0%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.SideBar ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.SideBar ul li {
+  padding: 10px 20px;
+  list-style: none;
+  font-size: 20px;
+}
+
+.SideBar ul li:hover {
+  background-color: rgb(212, 212, 212);
+}
+
+.SideBar ul #back a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#but-nav,
+#but-nav-li {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .hide-onMobile,
+  .navBar .left li:nth-child(2),
+  .navBar .left li:nth-child(3),
+  .navBar .left li:nth-child(4) {
+    display: none;
+  }
+  #but-nav,
+  #but-nav-li {
+    display: block;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-bar {
+    width: 100%;
+  }
+}
+
+/*---Container--- */
+
+/*---Home UI---*/
+.continer .Home-UI {
+  background-image: url(PicRef/BackGround/Home-UI.png);
+  min-height: clamp(400px, 90vw, 928px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.continer .Home-UI .TextHeader {
+  color: white;
+  text-align: center;
+  font-size: clamp(20px, 5vw, 90px);
+  margin-bottom: clamp(10px, 10vw, 900px);
+  text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.3);
+}
+
+#voteText {
+  background: linear-gradient(90deg, #ff1166, #ff1166, #eb6e8d, #ff9bc0, #ff1467, #ff1166, #ff1166);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s infinite ease-in-out;
+}
+
+.continer .Home-UI .TextHeader #voteText {
+  background-size: 400% 100%;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/*--LeaderCandit--*/
+.continer .Leader-Candidate {
+  background-image: url(PicRef/BackGround/Leader-Candidate.png);
+  min-height: 621px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.continer .Leader-Candidate .CanditText {
+  color: white;
+  text-align: center;
+  font-size: clamp(20px, 3vw, 50px);
+  text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.3);
+}
+
+.showcase {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url("bg-texture.png") center/cover no-repeat;
+  overflow: hidden;
+}
+
+.main-name-bg {
+  position: absolute;
+  font-size: 15vw;
+  color: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  left: 5%;
+  top: 30%;
+  z-index: 0;
+}
+
+.left-panel {
+  position: absolute;
+  left: 5%;
+  top: 20%;
+  z-index: 2;
+  color: white;
+}
+
+.title-info h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.character-img {
+  position: absolute;
+  right: 5%;
+  bottom: 0;
+  height: 100%;
+  z-index: 1;
+}
+
+@media (max-width: 600px) {
+  .character-img {
+    position: absolute;
+    left: 60%;
+    right: -100%;
+    bottom: 0;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+}
+
+.character-img img {
+  height: 100%;
+  object-fit: contain;
+}
+
+.selector-panel {
+  position: absolute;
+  right: 2%;
+  bottom: 90px; /* ⬅️ Ganti top jadi bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 3;
+  margin-right: 20px;
+}
+
+.char-icon {
+  width: 60px;
+  height: 60px;
+  border: 3px solid rgb(224, 224, 224);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.char-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.continer .Leader-Candidate .CanditText #Candit-Text {
+  color: #11ffeb;
+}
+
+/*--Vote-Row--*/
+.continer .RTX-Vote {
+  background-color: rgb(255, 255, 255);
+  height: clamp(100px, 10vw, 200px);
+  border-radius: 40px 0 0 0;
+  width: 100%;
+}
+.RTX-Vote {
+  margin-top: -70px; /* numpuk ke atas sedikit */
+  z-index: 4;
+  position: relative;
+}
+.RTX-Main {
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+  height: clamp(100px, 10vw, 200px);
+  justify-content: space-between;
+  margin-right: 40px;
+}
+
+.RTX-TEXT {
+  display: block;
+  gap: 15px;
+}
+
+.RTX-Main .RTX-TEXT #TextMainRGB {
+  background: linear-gradient(90deg, #ff1166, #ff1166, #eb6e8d, #ff9bc0, #ff1467, #ff1166, #ff1166);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: TextMainRGBMove 6s infinite ease-in-out;
+  background-size: 400% 100%;
+}
+
+@keyframes TextMainRGBMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.RTX-Vote .RTX-Main .Button-Vote .Button {
+  padding: 12px 30px;
+  background: linear-gradient(90deg, #7a73d1, #5b51c6);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 25px;
+  border: none;
+  border-radius: 40% 0 40% 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.RTX-Vote .RTX-Main .Button-Vote .Button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+  z-index: 0;
+}
+
+.RTX-Vote .RTX-Main .Button-Vote .Button:hover::before {
+  left: 0;
+}
+
+.RTX-Vote .RTX-Main .Button-Vote .Button:hover {
+  background: linear-gradient(90deg, #5b51c6, #7a73d1);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.RTX-Vote .RTX-Main .RTX-TEXT {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+}
+
+@media (max-width: 600px) {
+  .RTX-TEXT {
+    display: none !important;
+  }
+
+  .RTX-Main {
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .RTX-Vote .RTX-Main .Button-Vote .Button {
+    font-size: 30px;
+  }
+}
+
+.RTX-Main #TextMain {
+  font-size: 20px;
+}
+
+/*--Footer--*/
+#list-footer {
+  list-style: none;
+}
+
+.continer .Footer {
+  background-color: black;
+  min-height: clamp(100px, 30vw, 200px);
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  color: #838282;
+}
+
+.continer .Footer a {
+  color: #838282;
+}
+
+.Footer .logo-footer {
+  min-height: clamp(100px, 30vw, 200px);
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid #f5f5f5;
+}
+
+.Footer .logo-footer .img-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+#footer-logo {
+  width: 50%;
+}
+
+.Footer .text-footer {
+  min-height: clamp(100px, 30vw, 200px);
+  width: 80%;
+}
+
+/*--Footer Text--*/
+.Footer .text-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.Footer .text-footer #list-footer #seconnd-footer,
+.Footer .text-footer #list-footer #first-footer {
+  margin-bottom: 20px;
+  padding: 0 30px;
+}
+
+.Footer .text-footer #seconnd-footer ul {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.Footer .text-footer #first-footer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  text-shadow: #00ccff 1px 1px 7px;
+}
+
+/*--Pop Up Misi Visi*/
+.visi-btn {
+  padding: 12px 20px;
+  background-color: #7a73d1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.visi-btn:hover {
+  background-color: #5b51c6;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* redup */
+  backdrop-filter: blur(5px); /* blur background */
+  display: none; /* disembunyiin awalnya */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+}
+
+.close-btn:hover {
+  color: #ff1166;
+}

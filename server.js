@@ -1,17 +1,21 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const PORT = 3000;
+const mysql = require("mysql2");
 
-
-app.use('/css', express.static(path.join(__dirname, 'css')));
-app.use('/FOTO', express.static(path.join(__dirname, 'FOTO')));
-// Kirim dbadmin.html sebagai halaman utama
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dbadmin.html'));
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "", // default XAMPP tanpa password
+  database: "kampus_konnect", // ganti dengan nama database kamu
 });
 
-// Jalankan server
-app.listen(PORT, () => {
-  console.log(`Server berjalan di http://localhost:${PORT}`);
+// Cek koneksi
+db.connect((err) => {
+  if (err) {
+    console.error("Gagal konek ke database:", err);
+  } else {
+    console.log("Terhubung ke database MySQL (XAMPP)");
+  }
+
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server berjalan di http://localhost:${PORT}`);
+  });
 });
