@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Gabarito:wght@400..900&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Gabarito", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+@media (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+/* Styling Dasar */
+.head,
+.navBar,
+.navBar ul {
+  display: flex;
+  align-items: center;
+}
+.navBar {
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background-color: white; /* Atau warna header Anda */
+}
+.navBar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+.navBar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+#logo {
+  height: 40px;
+}
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ============================================== */
+/* === LOGIKA RESPONSIVE (INTI PERBAIKAN) === */
+/* ============================================== */
+
+/* 1. Secara default (Desktop), sembunyikan Tombol Menu Hamburger */
+.Menu-List {
+  display: none;
+}
+
+/* 2. Di layar kecil (Mobile), lakukan perubahan */
+@media (max-width: 768px) {
+  /* Sembunyikan link navigasi dan tombol login/profil versi desktop */
+  .hide-on-mobile {
+    display: none;
+  }
+  .hide-on-mobile1 {
+    display: none;
+  }
+
+  /* Tampilkan kembali Tombol Menu Hamburger */
+  .Menu-List {
+    display: block; /* atau flex */
+  }
+}
+
+/* ============================================== */
+/* === CSS UNTUK JAVASCRIPT === */
+/* ============================================== */
+
+/* Sidebar yang tersembunyi */
+.SideBar {
+  position: fixed;
+  left: -100%; /* Sembunyikan di luar layar */
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: white;
+  z-index: 2000;
+  transition: left 0.3s ease-in-out;
+  box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+/* Style saat sidebar aktif (ditambah oleh JS) */
+.SideBar.show {
+  left: 0;
+}
+.SideBar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.SideBar a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#but-nav {
+  width: 24px;
+}
+
+/* Dropdown Profil */
+.profile-dropdown-container {
+  position: relative;
+}
+.dropdown-menu {
+  display: none; /* Sembunyi secara default */
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  z-index: 100;
+  width: 180px;
+}
+.dropdown-menu.show {
+  display: block; /* Muncul saat class 'show' ditambahkan oleh JS */
+}
+.dropdown-menu a {
+  padding: 12px 16px;
+  display: block;
+}
+.dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}

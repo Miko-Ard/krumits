@@ -59,7 +59,11 @@ if (mysqli_num_rows($result_mhs) === 1) {
         $_SESSION['logged_in'] = true;
         $_SESSION['mahasiswa_id'] = $mahasiswa['id'];
         $_SESSION['mahasiswa_nama'] = $mahasiswa['nama'];
-        header("Location: vote-section.php");
+        $_SESSION['foto_filename'] = $mahasiswa['foto_profil'];
+        if (!empty($mahasiswa['foto_profil'])) {
+            $_SESSION['user_photo_path'] = 'uploads/' . $mahasiswa['foto_profil'];
+        }
+        header("Location: halaman_utama.php");
         exit();
     }
 }

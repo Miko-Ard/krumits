@@ -9,6 +9,7 @@ session_unset();
 session_destroy();
 
 // Arahkan pengguna kembali ke halaman login dengan pesan sukses
-header("Location: login.php?error=Anda telah berhasil logout.");
+header("Location: halaman_utama.php?error=Anda telah berhasil logout.");
+
 exit();
 ?>

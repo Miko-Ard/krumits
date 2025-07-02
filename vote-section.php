@@ -38,7 +38,7 @@ $kandidat_awal_data = $kandidat_data[$kandidat_awal_id];
         </div>
         <div class="navBar">
             <ul class="left">
-                <li><a href="#"><img src="FOTO/Kamp-color-blackblue.png" alt="" id="logo"></a></li>
+                <li><a href="halaman_utama.php"><img src="FOTO/Kamp-color-blackblue.png" alt="" id="logo"></a></li>
                 <li class="hide-onMobile1"><a href="#"><p>Home</p></a></li>
                 <li class="hide-onMobile1"><a href="#"><p>About Us</p></a></li>
                 <li class="hide-onMobile1"><a href="#"><p>Contact Us</p></a></li>

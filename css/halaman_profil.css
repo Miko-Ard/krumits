@@ -1,0 +1,496 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Gabarito:wght@400..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Gabarito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background-image: url(SourcePic/User\ Setting.png);
+  max-height: 1020px;
+  max-width: 1920px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+.web-display {
+  display: block;
+}
+
+.Setting {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/*--Navbar--*/
+.Nav-Bar {
+  height: 70px;
+  background-color: #5b5859;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  box-shadow: 1px 5px 30px black;
+}
+
+.Nav-Bar #NavText {
+  font-size: 20px;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+#NavText span {
+  background: linear-gradient(120deg, #ffffff, #5271ff, #ffffff);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shineText 3s ease-in-out infinite;
+}
+
+@keyframes shineText {
+  0% {
+    background-position: 200% center;
+  }
+  50% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/*--Setting-menu--*/
+.container {
+  height: 878px;
+}
+
+.container .Left-Menu .user-Menu ul li a,
+.container .Left-Menu .Back p a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.container .layout-Setting {
+  height: 100%;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.container .layout-Setting .Left-Menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 325px;
+}
+.container .layout-Setting .Left-Menu .user-Menu {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  font-size: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.container .layout-Setting .Left-Menu .user-Menu ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container .layout-Setting .Left-Menu .user-Menu ul li {
+  padding: 10px;
+  border-radius: 50px;
+}
+.container .layout-Setting .Left-Menu .user-Menu ul li a {
+  color: #ff4d4d;
+}
+
+.container .layout-Setting .Left-Menu .user-Menu ul li:first-child {
+  background-color: #5271ff;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(82, 113, 255, 0.4);
+  transition: background-color 0.3s ease;
+}
+
+.container .layout-Setting .Left-Menu .user-Menu ul li:first-child a {
+  color: white;
+}
+
+/* Hover untuk Logout */
+.container .layout-Setting .Left-Menu .user-Menu ul li:nth-child(2):hover {
+  background-color: #ff4d4d;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 77, 77, 0.4);
+}
+
+.container .layout-Setting .Left-Menu .user-Menu ul li:nth-child(2):hover a {
+  color: white;
+}
+
+.container .layout-Setting .Left-Menu .user-Menu ul li a {
+  padding: 0 10px;
+}
+
+.container .layout-Setting .Left-Menu .Back {
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  font-size: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.container .layout-Setting .Left-Menu .Back p {
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.container .layout-Setting .Left-Menu .Back p a {
+  padding: 0 10px;
+}
+
+/* Hover untuk Back */
+.container .layout-Setting .Left-Menu .Back p:hover {
+  background-color: #5ec3ff;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(94, 195, 255, 0.4);
+}
+
+.container .layout-Setting .Left-Menu .Back p:hover a {
+  color: white;
+}
+
+/*--Rignt Sett--*/
+.container .layout-Setting .Right-Setting {
+  width: 1427px;
+  margin-bottom: 30px;
+  background-image: url(SourcePic/Bg-Setting-Useer.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+/*--Img-Set--*/
+#user-logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.Right-Setting .Setting-Range .Logo-Setting .img-setting {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Right-Setting .Setting-Range .Logo-Setting .img-setting li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.Right-Setting .Setting-Range {
+  padding: 30px;
+}
+
+.Right-Setting .Setting-Range .list-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#Remove {
+  border: 2px solid #ff4d4d;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(255, 77, 77, 0.5);
+  transition: all 0.3s ease;
+}
+
+#Remove:hover {
+  background-color: #ff4d4d;
+  color: white;
+  box-shadow: 0 6px 18px rgba(255, 77, 77, 0.6);
+  cursor: pointer;
+}
+
+#Change {
+  background-color: #5271ff;
+  color: white;
+  border: 2px solid transparent;
+  padding: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(82, 113, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+#Change:hover {
+  background-color: white;
+  color: #5271ff;
+  border: 2px solid #5271ff;
+  box-shadow: 0 6px 18px rgba(82, 113, 255, 0.6);
+  cursor: pointer;
+}
+
+/*--MainSetting--*/
+.textbox {
+  width: 500px;
+  height: 40px;
+  background-color: #e7e7e7;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 15px;
+  color: #5b5859;
+}
+.SettingMain {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.SettingMain .warp {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.SettingMain .changeSetting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*===========*/
+/*==Mode HP==*/
+
+.hp-display {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Img backG */
+.hp-display .navImgContent {
+  width: 100%;
+  height: 300px;
+  background-image: url(SourcePic/Evlyn2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hp-display .navImgContent .navBar {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 60px; /* cukup kecil agar header atas terlihat simple */
+  display: flex;
+  align-items: flex-start; /* biar item nempel ke atas */
+  justify-content: space-between;
+  position: relative;
+}
+
+.hp-display .navImgContent .navBar .menuAtas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px; /* Biar spacing kanan kirinya rapi */
+  box-sizing: border-box;
+}
+
+#button-NavHP {
+  width: 30px;
+  height: 30px;
+  margin: 0 15px;
+}
+
+/*--MenuUtama--*/
+.MenuUtama-Hp {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 500px;
+  width: 85%;
+  border: 2px solid greenyellow;
+  box-sizing: border-box;
+  z-index: 5;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ProfileMenu-HP {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid red;
+}
+
+/*==Profile==*/
+/* Container utama dropdown */
+#ListForDropDown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#ListForDropDown:hover {
+  background-color: #dbe4ff;
+}
+
+/* Ikon segitiga (list) */
+#list-img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.active #list-img {
+  transform: rotate(90deg);
+}
+
+/* Dropdown */
+#DropDownnList {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+#DropDownnList.show {
+  max-height: 500px;
+  padding: 20px;
+}
+
+/* Input & Label style */
+#DropDownnList label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #444;
+}
+
+#DropDownnList input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+#DropDownnList p {
+  height: 40px;
+  background-color: #e7e7e7;
+  border-radius: 10px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+#SubmitProfile {
+  display: none; /* tombol tidak muncul di awal */
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #5271ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(82, 113, 255, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#SubmitProfile:hover {
+  background-color: white;
+  color: #5271ff;
+  border: 2px solid #5271ff;
+  box-shadow: 0 8px 24px rgba(82, 113, 255, 0.4);
+}
+
+.LogoutMenu-HP a {
+  width: 100%;
+  background-color: #ff4d4d;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.OutSec {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .web-display {
+    display: none;
+  }
+  .hp-display {
+    display: block;
+  }
+}

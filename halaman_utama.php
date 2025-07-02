@@ -1,82 +1,132 @@
+<?php
+// 1. Selalu mulai sesi di baris paling atas file
+// Ini agar PHP bisa membaca apakah ada data sesi yang tersimpan atau tidak.
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/halaman_utama.css" />
   <title>Kampus Konnect</title>
-  <link rel="stylesheet" href="halaman_utama.css" />
 </head>
 <body>
 
     <!-- Header -->
     <header class="header">
-        <img src="FOTO/krumits_putih.png" alt="Kampus Konnect Logo" class="logo" />
-        <nav class="navbar">
-        <a href="#">Home</a>
-        <a href="#">About Us</a>
-        <a href="#">Our Team</a>
-        </nav>
-        <div class="auth-buttons">
-        <button class="login">LOGIN</button>
-        <button class="signup">SIGN UP</button>
-        </div>
+        <?php include 'nav-bar-logout.php';?>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-        <div class="hero-text-box">
-            <h2>Hollaa There!</h2>
-            <p>
-            Welcome to our community! Here you'll find exciting events, projects,
-            and the chance to voice your opinions on campus matters. Your vote counts,
-            and your participation shapes our future. Join us in building a better campus environment.
-            </p>
+    <!-- InformationPanel Section -->
+    <section class="InformationPanel" id="Home">
+        <div class="Innformationn-panel">
+            <div class="inf-content">
+                <ul id="PanelSwapper">
+                    <li class="SwapperContorl"><a href="#" id="prevBtn"><img src="FOTO/Button/Arrow-Left.png" alt="left" class="Button-swap"></a></li>
+                    <!--Pannel Satu-->
+                    <li class="MainPanel active-panel" style="background-image: url(FOTO/Home-Information.png);">
+                        <div class="Main-Content scrollable-box">
+                          <h2>HOLLA <span style="color: #5271FF;">THERE !</span></h2>
+                          <h4>
+                               Welcome to our community! Here, your voice matters—join exciting events and cast your vote to make a real impact. Explore upcoming activities, stay informed, and connect with others who share your passion. Whether you’re voting for your favorites or participating in events, we’re here to support you every step of the way. Get involved, have fun, and let’s make great things happen together!
+                          </h4>
+                        </div>
+
+                        <div class="Img-Contet">
+                            <img src="FOTO/Keqing.png" alt="" class="/img-content-maskot">
+                        </div>
+                    </li>
+
+                    <!--Pannel Dua-->
+                    
+                    <li class="MainPanel" style="background-image: url(FOTO/Home-Information-2.png);">
+                        <div class="Main-Content scrollable-box">
+                            <h2>HOLLA <span style="color: #5271FF;">THERE !</span></h2>
+                            <h4>
+                                Welcome to our community! Here, your voice matters—join exciting events and cast your vote to make a real impact. Explore upcoming activities, stay informed, and connect with others who share your passion. Whether you’re voting for your favorites or participating in events, we’re here to support you every step of the way. Get involved, have fun, and let’s make great things happen together!
+                                
+                            </h4>
+                            <a href="vote-section.php">Klik disini!</a>
+                        </div>
+                        
+                        <div class="Img-Contet">
+                            <img src="FOTO/Miko.png" alt="" class="img-content-maskot">
+                        </div>
+                    </li>
+                
+                    
+                    <!--Pannel Tiga-->
+                    <li class="MainPanel" style="background-image: url(FOTO/Home-Information-3.png);">
+                        <div class="Main-Content scrollable-box">
+                            <h2>HOLLA <span style="color: #5271FF;">THERE !</span></h2>
+                            <h4>
+                                Welcome to our community! Here, your voice matters—join exciting events and cast your vote to make a real impact. Explore upcoming activities, stay informed, and connect with others who share your passion. Whether you’re voting for your favorites or participating in events, we’re here to support you every step of the way. Get involved, have fun, and let’s make great things happen together!
+                            </h4>
+                        </div>
+                        
+                        <div class="Img-Contet">
+                            <img src="FOTO/Donate.png" alt="" class="img-content-maskot">
+                        </div>
+                    </li>
+
+                    <li class="SwapperContorl"><a href="#" id="nextBtn"><img src="FOTO/Button/Arrow-Right.png" alt="right" class="Button-swap"></a></li>
+                </ul>
+            </div>
         </div>
-        <img src="FOTO/Keqing.png" alt="Mascot" class="hero-character" />
-        </div>
+
     </section>
 
     <!-- About Us Section -->
-    <section class="about">
-    <div class="about-container">
-        <div class="about-text">
-        <h2>About <span style="color: #FF1166;"> Us </span> </h2> 
-        <p>
-            Selamat datang di Kampus Konnect, platform tepercaya untuk voting pemilihan yang memudahkan partisipasi Anda dalam menentukan hasil penting. Kami menyediakan antarmuka ramah pengguna untuk menjelajahi acara, memberikan suara, dan berinteraksi dengan komunitas. 
-            Dengan komitmen pada transparansi dan keadilan, kami memastikan setiap suara bermakna. Bergabunglah bersama kami untuk membentuk masa depan melalui partisipasi aktif—suara Anda penting!
-        </p>
+    <section class="about" id="about-us">
+        <div class="about-container">
+            <div class="About-Text scrollable-box-about">
+                <div class="Texta">
+                    <h2 style="color: black;" id="JudulAbout">About <span style="color: #FF1166;">Us</span></h2><br>
+                    <p style="color: #000;" id="TeksAbout">Selamat datang di Kampus Konnect, 
+                        platform tepercaya untuk voting pemilihan yang memudahkan partisipasi Anda dalam menentukan hasil penting. 
+                        Kami menyediakan antarmuka ramah pengguna untuk menjelajahi acara, memberikan suara, dan berinteraksi dengan komunitas. 
+                        Dengan komitmen pada transparansi dan keadilan, kami memastikan setiap suara bermakna. 
+                        Bergabunglah bersama kami untuk membentuk masa depan melalui partisipasi aktif—suara Anda penting!</p>
+                </div>
+            </div>
+            <div class="img-about">
+                <img src="FOTO/Kamp-color-blackblue.png" alt="logo" id="about-logo">
+            </div>
         </div>
-        <div class="about-logo">
-        <img src="FOTO/krumits_putih.png" alt="Kampus Konnect Large Logo" />
-        </div>
-    </div>
     </section>
 
     <!-- Our Team Section -->
     <section class="team">
-    <h2>Our Team</h2>
-    <div class="team-grid">
-        <div class="team-member" data-name="Banu Najieh AL-Fadhil" data-role="Back End" data-nim="2400018060">
-        <img src="imagepro/banu.jpeg" alt="Banu" />
+        <h2><center style="font-size: 30px;">Our Team</center></h2>
+        <div class="container">
+            <div class="team-panels">
+              <div class="team-card" style="--i:0">
+                <div class="blur-bg" style="background-image: url('FOTO/banu.png');"></div>
+                <div class="logo1"><img src="FOTO/Back_End.png" alt="Back End" style="width:40px; height:auto;margin-left:20px;"/></div>
+              </div>
+              <div class="team-card" style="--i:1">
+                <div class="blur-bg" style="background-image: url('FOTO/bintang.png');"></div>
+                <div class="logo1"><img src="FOTO/Database.png" alt="Database" style="width:40px; height:auto;margin-left:20px;"/></div>
+              </div>
+              <div class="team-card" style="--i:2">
+                <div class="blur-bg" style="background-image: url('FOTO/miko.png');"></div>
+                <div class="logo1"><img src="FOTO/Maager.png" alt="Project Manager" style="width:40px; height:auto;margin-left:20px;"/></div>
+              </div>
+              <div class="team-card" style="--i:3">
+                <div class="blur-bg" style="background-image: url('FOTO/bersama.jpeg');"></div>
+                <div class="logo1"><img src="FOTO/Group.png" alt="GitHub Manager" style="width:40px; height:auto;margin-left:20px;"/></div>
+              </div>
+              <div class="team-card" style="--i:4">
+                <div class="blur-bg" style="background-image: url('FOTO/micdan.png');"></div>
+                <div class="logo1"><img src="FOTO/github-mark.png" alt="Front End" style="width:40px; height:auto;margin-left:20px;"/></div>
+              </div>
+              <div class="team-card" style="--i:5">
+                <div class="blur-bg" style="background-image: url('FOTO/akbar.png"></div>
+                <div class="logo1"><img src="FOTO/Front-ed.png" alt="Front End" style="width:40px; height:auto;margin-left:20px;"/></div>
+              </div>
+            </div>
         </div>
-        <div class="team-member" data-name="Bintang AlFathir Daud" data-role="Data Base" data-nim="2400018054">
-        <img src="imagepro/bintang.jpeg" alt="Bintang" />
-        </div>
-        <div class="team-member" data-name="M.Miko Ardiansyah" data-role="Project Manager" data-nim="2400018056">
-        <img src="imagepro/miko.jpeg" alt="Miko" />
-        </div>
-        <div class="team-member" data-name="Our Teams">
-        <img src="imagepro/bersama.jpeg" />
-        </div>
-        <div class="team-member" data-name="Michdan Alkahfi" data-role="Github Manager" data-nim="2400018055">
-        <img src="imagepro/piccel.jpeg" alt="Banu" />
-        </div>
-        <div class="team-member" data-name="M. Akbar Riyan Hartoto" data-role="Front End" data-nim="2400018052">
-        <img src="imagepro/akbar.jpeg" alt="akbar" />
-        </div>
-        <!-- Tambahkan lebih banyak anggota jika perlu -->
-    </div>
     </section>
 
     <!-- Pop-up Info Box -->
@@ -86,11 +136,12 @@
     <p><strong>NIM:</strong> <span id="popup-nim"></span></p>
     </div>
 
-    <div class="Footer">
 
+    <!-- Footer Section -->
+    <div class="Footer" id="contact">
             <div class="logo-footer">
                 <div class="img-logo">
-                    <img src="imagepro/krumits_putih.png" id="footer-logo">
+                    <img src="FOTO/krumits_putih.png" id="footer-logo">
                 </div>
             </div>
 
@@ -123,9 +174,9 @@
                 </div>
             </div>
         </div>
+    </div>
 
     
-    <script src="piccel.js"></script>
+    <script src="halaman.js"></script>
 </body>
-<!--<script src="piccel.js"></script>-->
 </html>
