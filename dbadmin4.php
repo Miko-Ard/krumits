@@ -1,14 +1,27 @@
 <?php
-
 session_start();
+require 'koneksi.php';
 
-$_SESSION['username'] = 'Admin';
-
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-
-    die("AKSES DITOLAK: Anda harus login sebagai admin untuk mengakses halaman ini.");
+// Proteksi Halaman Admin
+if (!isset($_SESSION['admin_logged_in']) || !$_SESSION['admin_logged_in']) {
+    die("AKSES DITOLAK: Anda harus login sebagai admin.");
 }
+
+// Ambil data admin yang sedang login dari database (HANYA USERNAME)
+$admin_id = $_SESSION['admin_id'];
+$sql = "SELECT username FROM admins WHERE id = ?";
+$stmt = mysqli_prepare($koneksi, $sql);
+
+if ($stmt === false) {
+    die("MySQL Prepare Error: " . mysqli_error($koneksi));
+}
+
+mysqli_stmt_bind_param($stmt, "i", $admin_id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$admin_data = mysqli_fetch_assoc($result);
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -67,7 +80,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
       <div class="logout-section">
         <ul class="sidebar-menu">
           <li>
-            <a href="#">
+            <a href="logout.php">
               <svg viewBox="0 0 24 24"><path d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z"></path></svg>
               <span>Log out</span>
             </a>
@@ -83,7 +96,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
           <p>Wednesday, May 6th 2025</p>
         </div>
         <div class="admin-profile">
-                <img src="https://i.pravatar.cc/40?u=admin" alt="Admin Avatar" />
+                 <img src="FOTO/default.png" alt="">
                 <div class="admin-info">
                     <div class="name"><?php echo htmlspecialchars($_SESSION['username']); ?></div>
                     <div class="role">Admin</div>
@@ -103,40 +116,28 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
           <h3>Profile settings</h3>
         </div>
 
-        <form class="settings-form">
+        <form class="settings-form" action="proses_update_admin.php" method="POST" enctype="multipart/form-data">
           <div class="avatar-section">
-            <img class="avatar-image" src="https://i.pravatar.cc/80?u=admin" alt="Current Avatar" />
-            <div>
-              <button type="button" class="btn btn-primary">Update New</button>
-              <button type="button" class="btn btn-secondary">Delete avatar</button>
-            </div>
+            <img src="FOTO/default.png" alt="Admin Avatar" />
+            
           </div>
+<div class="form-grid">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($admin_data['username']); ?>" readonly>
+        <small>Username tidak dapat diubah.</small>
+    </div>
 
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="first-name">First Name <span class="required">*</span></label>
-              <input type="text" id="first-name" name="first-name" />
-            </div>
-            <div class="form-group">
-              <label for="last-name">Last Name <span class="required">*</span></label>
-              <input type="text" id="last-name" name="last-name" />
-            </div>
-            <div class="form-group full-width">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" />
-            </div>
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text" id="username" name="username" />
-            </div>
-            <div class="form-group">
-              <label>Gender</label>
-              <div class="gender-options">
-                <label for="male"> <input type="radio" id="male" name="gender" value="male" checked /> Male </label>
-                <label for="female"> <input type="radio" id="female" name="gender" value="female" /> Female </label>
-              </div>
-            </div>
-          </div>
+    <div class="form-group">
+        <label for="new_password">Password Baru</label>
+        <input type="password" id="new_password" name="new_password" placeholder="Masukkan password baru">
+    </div>
+
+    <div class="form-group">
+        <label for="confirm_password">Konfirmasi Password Baru</label>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Ketik ulang password baru">
+    </div>
+</div>
 
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -151,5 +152,35 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
         </form>
       </div>
     </main>
+    <script>
+    // Cari form pengaturan
+    const settingsForm = document.querySelector('.settings-form');
+
+    settingsForm.addEventListener('submit', function(event) {
+        // 1. Hentikan form agar tidak me-refresh halaman
+        event.preventDefault();
+
+        // 2. Kirim data form secara diam-diam di latar belakang
+        fetch('proses_update_admin.php', {
+            method: 'POST',
+            body: new FormData(settingsForm)
+        })
+        .then(response => response.json()) // Ubah respon dari server menjadi objek JSON
+        .then(data => {
+            // 3. Tampilkan pesan dari server menggunakan alert()
+            alert(data.message);
+
+            // 4. Opsional: Jika sukses, kosongkan kolom password
+            if (data.status === 'success') {
+                document.getElementById('new_password').value = '';
+                document.getElementById('confirm_password').value = '';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan koneksi.');
+        });
+    });
+</script>
   </body>
 </html>

@@ -25,31 +25,9 @@ $kandidat_awal_data = $kandidat_data[$kandidat_awal_id];
     <title>Vote-Section</title>
 </head>
 <body>
-    <div class="head">
-        <div class="SideBar">
-            <ul>
-                <li onclick="HideSiderbar(event)" id="back"><a href="#"><img src="FOTO/Back-Button Black.png" alt="" id="but-nav">Back</a></li>
-                <li><a href="#Home"><p>Home</p></a></li>
-                <li><a href="#"><p>About Us</p></a></li>
-                <li><a href="#"><p>Contact Us</p></a></li>
-                <li><a href="signup.php">Sign Up</a></li>
-                <li><a href="login.php">Login</a></li>
-            </ul>
-        </div>
-        <div class="navBar">
-            <ul class="left">
-                <li><a href="halaman_utama.php"><img src="FOTO/Kamp-color-blackblue.png" alt="" id="logo"></a></li>
-                <li class="hide-onMobile1"><a href="#"><p>Home</p></a></li>
-                <li class="hide-onMobile1"><a href="#"><p>About Us</p></a></li>
-                <li class="hide-onMobile1"><a href="#"><p>Contact Us</p></a></li>
-            </ul>
-            <ul class="right">
-                <li class="hide-onMobile"><a href="signup.php" id="sign">Sign Up</a></li>
-                <li class="hide-onMobile"><a href="login.php" id="login">Login</a></li>
-                <li class="Menu-List" onclick="ShowSideBar(event)" id="but-nav-li"><a href=""><img src="PicRef/menu-sort black.png" alt="" id="but-nav"></a></li>
-            </ul>
-        </div>
-    </div>
+    <header class="header">
+        <?php include 'nav-bar-logout.php';?>
+    </header>
     <div class="continer">
         <div class="Home-UI" id="Home">
             <div class="TextHeader">
@@ -87,7 +65,7 @@ $kandidat_awal_data = $kandidat_data[$kandidat_awal_id];
 
         
         <div class="RTX-Vote">
-            <div class="RTX-Main" style="border: 2px solid red;">
+            <div class="RTX-Main"">
                 <ul class="RTX-TEXT">
                     <li id="mainC">
                         <img src="PicRef/Kamp-color-blackblue.png" alt="" style="width: 100px;">
@@ -98,7 +76,7 @@ $kandidat_awal_data = $kandidat_data[$kandidat_awal_id];
                 </ul>
                 
                 <div class="Button-Vote">
-    <form action="proses_vote.php" method="POST">
+    <form action="proses_vote.php" method="POST" id="voteForm">
         <input type="hidden" id="pilihan-vote" name="pilihan_kandidat" value="1">
         <button type="submit" class="Button" id="tombol-vote-utama">VOTE</button>
     </form>
@@ -155,10 +133,68 @@ $kandidat_awal_data = $kandidat_data[$kandidat_awal_id];
       <p id="modal-misi"></p>
     </div>
   </div>
+
+<div id="errorPopup" class="custom-popup">
+        <div class="popup-content error">
+            <span class="popup-icon"><img src="FOTO/error-icon.png" alt="Error"></span>
+            <div>
+                <h2 class="popup-title">Error!</h2>
+                <p class="popup-message"></p>
+            </div>
+            <span id="closeErrorPopup" class="popup-close">&times;</span>
+        </div>
+    </div>
+
+    <div id="successPopup" class="custom-popup">
+        <div class="popup-content success">
+            <span class="popup-icon"><img src="FOTO/success-icon.png" alt="Success"></span>
+            <div>
+                <h2 class="popup-title">Berhasil!</h2>
+                <p class="popup-message"></p>
+            </div>
+            <span id="closeSuccessPopup" class="popup-close">&times;</span>
+        </div>
+    </div>
+  
     <script>
       window.kandidatData = <?php echo json_encode($kandidat_data); ?>;
+      // Tangkap form voting
+const voteForm = document.querySelector('form[action="proses_vote.php"]');
+
+if (voteForm) {
+    voteForm.addEventListener('submit', function (event) {
+        // 1. Hentikan aksi default form (agar halaman tidak refresh)
+        event.preventDefault();
+
+        // 2. Siapkan data untuk dikirim
+        const formData = new FormData(this);
+
+        // 3. Kirim data ke proses_vote.php di latar belakang
+        fetch('proses_vote.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json()) // Ubah respon menjadi JSON
+        .then(data => {
+            // 4. Tampilkan alert berdasarkan pesan dari PHP
+            alert(data.message);
+
+            // 5. Opsional: Jika sukses, nonaktifkan tombol vote
+            if (data.status === 'success') {
+                const voteButton = this.querySelector('button[type="submit"]');
+                if(voteButton) {
+                    voteButton.disabled = true;
+                    voteButton.textContent = 'Terima Kasih';
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan koneksi saat mengirim suara.');
+        });
+    });
+}
     </script>
-    
     <script src="vote.js"></script>
 </body>
 </html>

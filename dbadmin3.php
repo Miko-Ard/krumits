@@ -1,51 +1,48 @@
 <?php
 // Proteksi & Koneksi
 session_start();
-  if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) { die("AKSES DITOLAK"); }
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) { die("AKSES DITOLAK"); }
 require 'koneksi.php';
 
 // --- LOGIKA FILTER TANGGAL ---
 $where_clause = "";
-$start_date = '';
-$end_date = '';
+$start_date = isset($_GET['start_date']) ? $_GET['start_date'] : '';
+$end_date = isset($_GET['end_date']) ? $_GET['end_date'] : '';
 
-if (isset($_GET['start_date']) && !empty($_GET['start_date']) && isset($_GET['end_date']) && !empty($_GET['end_date'])) {
-    $start_date = $_GET['start_date'];
-    $end_date = $_GET['end_date'];
-    
-    // Siapkan klausa WHERE untuk query SQL
+if (!empty($start_date) && !empty($end_date)) {
     $where_clause = "WHERE DATE(v.waktu_vote) BETWEEN ? AND ?";
 }
+
+// --- LOGIKA SORTING ---
 $sort_options = ['asc', 'desc'];
 $sort_order = isset($_GET['sort']) && in_array(strtolower($_GET['sort']), $sort_options) ? $_GET['sort'] : 'desc';
-// Variabel $order_by_clause DIBUAT DI SINI
 $order_by_clause = "ORDER BY v.waktu_vote " . $sort_order;
 
-// Kita butuh v.id untuk link delete/edit
-$sql = "SELECT v.id as vote_id, m.nim, m.nama, v.pilihan_kandidat, v.waktu_vote 
-        FROM votes v 
-        JOIN mahasiswa m ON v.mahasiswa_id = m.id
+// --- Siapkan parameter untuk link agar filter tidak hilang ---
+$filter_params = '';
+if (!empty($start_date) && !empty($end_date)) {
+    $filter_params = "&start_date=" . htmlspecialchars($start_date) . "&end_date=" . htmlspecialchars($end_date);
+}
+
+// --- QUERY SQL UTAMA YANG DIPERBAIKI ---
+$sql = "SELECT 
+            v.id AS vote_id, 
+            m.nim, 
+            m.nama, 
+            m.foto_profil, -- Pastikan ini ada
+            v.pilihan_kandidat, 
+            v.waktu_vote 
+        FROM 
+            votes AS v 
+        LEFT JOIN 
+            mahasiswa AS m ON v.mahasiswa_id = m.id
         $where_clause
         $order_by_clause";
 
 $stmt = mysqli_prepare($koneksi, $sql);
-
-// SORTING //
-$sort_options = ['asc', 'desc']; // Pilihan yang valid untuk keamanan
-$sort_order = isset($_GET['sort']) && in_array(strtolower($_GET['sort']), $sort_options) ? $_GET['sort'] : 'desc';
-
-$order_by_clause = "ORDER BY v.waktu_vote " . $sort_order;
-$filter_params = '';
-if (!empty($start_date) && !empty($end_date)) {
-    // htmlspecialchars untuk keamanan saat dicetak di href
-    $filter_params = "&start_date=" . htmlspecialchars($start_date) . "&end_date=" . htmlspecialchars($end_date);
-}
-
-// Jika ada filter tanggal, bind parameternya
 if (!empty($where_clause)) {
     mysqli_stmt_bind_param($stmt, "ss", $start_date, $end_date);
 }
-
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
@@ -125,7 +122,14 @@ $result = mysqli_stmt_get_result($stmt);
           <p><?php echo date('l, d F Y'); ?></p>
         </div>
         <div class="admin-profile">
-                <img src="https://i.pravatar.cc/40?u=admin" alt="Admin Avatar" />
+         <?php
+          $path_foto = 'FOTO/default.png'; // Foto default
+          // Cek apakah user punya foto dan filenya ada
+          if (!empty($row['foto_profil']) && file_exists('uploads/' . $row['foto_profil'])) {
+              $path_foto = 'uploads/' . $row['foto_profil'];
+          }
+          ?>
+                <img src="<?php echo htmlspecialchars($path_foto); ?>" alt="Admin Avatar" />
                 <div class="admin-info">
                     <div class="name"><?php echo htmlspecialchars($_SESSION['username']); ?></div>
                     <div class="role">Admin</div>
@@ -146,22 +150,22 @@ $result = mysqli_stmt_get_result($stmt);
         </div>
 
         <div class="response-list">
+          <span>Urutkan Berdasarkan Waktu: </span>
+          <a href="?sort=desc<?php echo $filter_params; ?>" style="<?php if($sort_order == 'desc') echo 'font-weight:bold;'; ?>">
+            Terbaru
+          </a> |  
+          <a href="?sort=asc<?php echo $filter_params; ?>" style="<?php if($sort_order == 'asc') echo 'font-weight:bold;'; ?>">
+            Terlama
+          </a>
           <div class="list-header">
-            <div class="sorting-menu" style="margin-bottom: 20px; font-size: 14px;">
-    <span>Urutkan Berdasarkan Waktu: </span>
+            
 
-    <a href="?sort=desc<?php echo $filter_params; ?>" style="<?php if($sort_order == 'desc') echo 'font-weight:bold;'; ?>">
-        Terbaru
-    </a> | 
-    <a href="?sort=asc<?php echo $filter_params; ?>" style="<?php if($sort_order == 'asc') echo 'font-weight:bold;'; ?>">
-        Terlama
-    </a>
-</div>
             <div>NIM</div>
             <div>NAME</div>
             <div>VOTE</div>
             <div>VOTING DATE</div>
             <div style="text-align: right">ACTIONS</div>
+            
           </div>
           
           
@@ -173,7 +177,14 @@ $result = mysqli_stmt_get_result($stmt);
                         <div class="list-item">
                             <div><?php echo htmlspecialchars($row['nim']); ?></div>
                             <div class="user-cell">
-                                <img src="https://i.pravatar.cc/32?u=<?php echo htmlspecialchars($row['nim']); ?>" alt="User Avatar">
+                                <?php
+                                $path_foto = 'FOTO/default.png'; // Foto default
+                                // Cek apakah user punya foto dan filenya ada
+                                if (!empty($row['foto_profil']) && file_exists('uploads/' . $row['foto_profil'])) {
+                                    $path_foto = 'uploads/' . $row['foto_profil'];
+                                }
+                                ?>
+                                <img src="<?php echo htmlspecialchars($path_foto); ?>" class="Profile-img" alt="Profil" style="width: 40px; height:40px; border-radius: 50%; object-fit: cover; margin-right: 10px;">
                                 <span><?php echo htmlspecialchars($row['nama']); ?></span>
                             </div>
                             <div>Kandidat <?php echo htmlspecialchars($row['pilihan_kandidat']); ?></div>

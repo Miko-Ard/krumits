@@ -46,7 +46,8 @@
             <label for="terms">Saya menyetujui <a href="#">Syarat</a> & <a href="#">Ketentuan</a></label>
           </div>
 
-          <button type="submit" class="btn btn-signup">SIGN UP</button>
+          <button type="submit" class="btn btn-signup">SIGN UP</button><br>
+        <p id="onmobile">Sudah punya akun? <a href="login.php">Klik disini!</a></p>  
         </form>
       </div>
     </div>

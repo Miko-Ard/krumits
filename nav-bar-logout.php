@@ -21,7 +21,7 @@
         <ul>
             <li id="backButton"><a href="#"><img src="FOTO/Back-Button Black.png" alt="" id="but-nav">Back</a></li>
             <li><a href="halaman_utama.php#Home"><p>Home</p></a></li>
-            <li><a href="about-us.php"><p>About Us</p></a></li>
+            <li><a href="#about-us"><p>About Us</p></a></li>
             <li><a href="#contact"><p>Contact Us</p></a></li>
             
             <?php if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true): ?>
@@ -34,9 +34,9 @@
     </div>
     <div class="navBar">
         <ul class="left">
-            <li><a href="halaman_utama.php"><img src="FOTO/Kamp-color-blackblue.png" id="logo" alt="Logo"></a></li>
+            <li><a href="halaman_utama.php"><img src="FOTO/logo2.png" id="logo" alt="Logo"></a></li>
             <li class="hide-onMobile1"><a href="halaman_utama.php#Home"><p>Home</p></a></li>
-            <li class="hide-onMobile1"><a href="about-us.php"><p>About Us</p></a></li>
+            <li class="hide-onMobile1"><a href="#about-us"><p>About Us</p></a></li>
             <li class="hide-onMobile1"><a href="#contact"><p>Contact Us</p></a></li>
         </ul>
         <ul class="right">
@@ -46,7 +46,7 @@
                     <div class="profile-dropdown-container" id="profileDropdownContainer">
                         <a href="halaman_profil.php" class="profile-link" title="Pengaturan Profil">
                             <?php
-                            $path_foto_profil = 'FOTO/default-avatar.png'; 
+                            $path_foto_profil = 'FOTO/default.png'; 
                             if (isset($_SESSION['user_photo_path']) && !empty($_SESSION['user_photo_path']) && file_exists($_SESSION['user_photo_path'])) {
                                 $path_foto_profil = $_SESSION['user_photo_path'];
                             }

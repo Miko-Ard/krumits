@@ -10,6 +10,7 @@
   --border-color: #e0e0e0;
   --shadow-color: rgba(0, 0, 0, 0.05);
   --danger-color: #e74c3c;
+  --secondary-color: #4032bf;
 }
 
 body {
@@ -245,15 +246,27 @@ main.content {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  /* PERBAIKAN: Animasikan semua perubahan properti */
+  transition: all 0.2s ease-in-out;
 }
 .btn-primary {
   background-color: var(--primary-color);
   color: var(--white-color);
 }
+
+/* Efek saat mouse di atas tombol */
 .btn-primary:hover {
   background-color: var(--secondary-color);
+  transform: translateY(-2px); /* Opsional: beri efek sedikit terangkat */
 }
+
+/* EFEK SAAT TOMBOL DIKLIK (untuk mengatasi masalah warna putih) */
+.btn-primary:active {
+  transform: scale(0.98); /* Opsional: beri efek sedikit tertekan */
+  background-color: var(--secondary-color); /* Pastikan warnanya sama dengan saat hover */
+}
+
+/* --- Aturan untuk .btn-secondary (sudah benar) --- */
 .btn-secondary {
   background-color: #f0f0f0;
   color: var(--text-color);
@@ -265,42 +278,59 @@ main.content {
 
 /* Grid untuk Form Fields */
 .form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Dua kolom sama lebar */
-  gap: 20px 30px; /* Jarak vertikal dan horizontal */
+  display: flex;
+  flex-direction: column; /* Membuat setiap form-group menjadi baris baru */
+  gap: 1.25rem; /* Jarak antar baris form */
 }
 
+/* Wadah untuk setiap grup (label + input) */
 .form-group {
   display: flex;
-  flex-direction: column;
+  align-items: center; /* Menyejajarkan label dan input secara vertikal */
 }
 
-.form-group.full-width {
-  grid-column: 1 / -1; /* Membuat field email memanjang 2 kolom */
-}
-
+/* Styling untuk semua label di dalam form */
 .form-group label {
-  margin-bottom: 8px;
+  flex-basis: 220px; /* Memberi lebar tetap untuk semua label agar rapi */
+  flex-shrink: 0; /* Mencegah label menyusut saat layar kecil */
   font-weight: 500;
-  font-size: 14px;
+  /* Opsional: membuat label rata kanan */
+  padding-right: 1.5rem; /* Jarak antara teks label dan input */
 }
 
-.form-group label .required {
-  color: var(--danger-color);
-}
-
+/* Styling untuk semua input field di dalam form */
 .form-group input[type="text"],
-.form-group input[type="email"] {
-  padding: 12px;
-  border: 1px solid var(--border-color);
+.form-group input[type="password"] {
+  flex-grow: 1; /* Biarkan input mengisi sisa ruang yang tersedia */
+  padding: 10px 15px;
+  border: 1px solid #dcdcdc;
   border-radius: 8px;
   font-size: 14px;
-  font-family: "Poppins", sans-serif;
+  transition: all 0.2s ease-in-out;
 }
+
+/* Efek visual saat input diklik/fokus */
 .form-group input:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(106, 90, 249, 0.2);
+  border-color: #6259ca; /* Warna utama Anda */
+  box-shadow: 0 0 0 3px rgba(98, 89, 202, 0.2);
+}
+
+/* Styling untuk input yang tidak bisa diubah */
+.form-group input:read-only {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Styling untuk teks kecil di bawah input */
+.form-group small {
+  display: block; /* Pastikan ia berada di baris baru */
+  width: 100%; /* Ambil lebar penuh dari kontainernya */
+  /* Sesuaikan margin-left agar pas di bawah input. (lebar label + gap) */
+  margin-left: calc(220px + 1.5rem);
+  margin-top: 5px;
+  font-size: 12px;
+  color: #888;
 }
 
 /* Radio Button untuk Gender */
@@ -405,7 +435,26 @@ main.content {
     fill: currentColor; /* Ini sudah benar, warna ikon akan mengikuti warna teks (color) dari <a> */
   }
 
-  .form-grid {
-    grid-template-columns: 1fr;
+  .form-group {
+    /* Ubah arah dari sampingan (row) menjadi atas-bawah (column) */
+    flex-direction: column;
+    align-items: flex-start; /* Sejajarkan semua item dari kiri */
+    gap: 8px; /* Kecilkan jarak antara label dan input */
+  }
+
+  .form-group label {
+    text-align: left; /* Kembalikan perataan label menjadi rata kiri */
+    padding-right: 0; /* Hapus padding kanan */
+    flex-basis: auto; /* Biarkan lebar label otomatis */
+  }
+
+  /* Perbaiki posisi teks 'small' */
+  .form-group small {
+    margin-left: 0; /* Hapus margin kiri agar posisinya benar */
+  }
+
+  /* Pindahkan tombol 'Save Changes' ke tengah */
+  .form-actions {
+    justify-content: center;
   }
 }

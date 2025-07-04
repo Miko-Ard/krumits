@@ -105,7 +105,7 @@ $nama_bulan_lengkap = date('F', $timestamp_hari_pertama);
                 <p><?php echo date('l, d F Y'); ?></p>
             </div>
             <div class="admin-profile">
-                <img src="https://i.pravatar.cc/40?u=admin" alt="Admin Avatar" />
+                <img src="FOTO/default.png" alt="Admin Avatar" />
                 <div class="admin-info">
                     <div class="name"><?php echo htmlspecialchars($_SESSION['username']); ?></div>
                     <div class="role">Admin</div>

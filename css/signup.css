@@ -97,6 +97,10 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
+#onmobile {
+  display: none;
+}
+
 /* RIGHT PANEL */
 .right-panel {
   flex: 1;
@@ -145,11 +149,13 @@ input[type="password"] {
 }
 
 .terms {
+  display: flex;
   margin: 15px 0;
   font-size: 0.9rem;
 }
 
 .terms input {
+  margin-top: 15px;
   margin-right: 8px;
 }
 
@@ -187,6 +193,9 @@ input[type="password"] {
     padding: 30px;
     border-radius: 0;
   }
+  .left-panel {
+    display: none;
+  }
 
   .logo {
     align-self: center;
@@ -195,5 +204,8 @@ input[type="password"] {
   .welcome {
     text-align: center;
     align-items: center;
+  }
+  #onmobile {
+    display: block;
   }
 }

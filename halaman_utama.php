@@ -98,7 +98,7 @@ session_start();
 
     <!-- Our Team Section -->
     <section class="team">
-        <h2><center style="font-size: 30px;">Our Team</center></h2>
+        <h2><center style="font-size: 30px;padding-top:50px;">Our Team</center></h2>
         <div class="container">
             <div class="team-panels">
               <div class="team-card" style="--i:0">
@@ -110,7 +110,7 @@ session_start();
                 <div class="logo1"><img src="FOTO/Database.png" alt="Database" style="width:40px; height:auto;margin-left:20px;"/></div>
               </div>
               <div class="team-card" style="--i:2">
-                <div class="blur-bg" style="background-image: url('FOTO/miko.png');"></div>
+                <div class="blur-bg" style="background-image: url('FOTO/miko.jpg');"></div>
                 <div class="logo1"><img src="FOTO/Maager.png" alt="Project Manager" style="width:40px; height:auto;margin-left:20px;"/></div>
               </div>
               <div class="team-card" style="--i:3">
